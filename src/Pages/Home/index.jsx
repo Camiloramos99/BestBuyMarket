@@ -1,10 +1,12 @@
 import Layout from "../../Components/Layout"
+import Card from "../../Components/Card"
 
 function Home() {
     return (
       <Layout>
-        <div className='bg-cyan-400' >
+        <div className='text-center font-bold	' >
             Home
+            <Card />
         </div>
       </Layout>
 

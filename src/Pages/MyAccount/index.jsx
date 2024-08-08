@@ -5,8 +5,7 @@ function MyAccount() {
       <Layout>
         <div className='bg-cyan-400' >
             MyAccount
-        </div>
-       
+        </div>  
       </Layout>
     )
   }
