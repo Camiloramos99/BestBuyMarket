@@ -1,22 +1,24 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
-import { useEffect } from "react"
-import { data } from "autoprefixer"
-
+import { fetchProducts } from "../../api"
 function Home() {
 
   // Estado para almacenar los productos
-  const [items, setItems] = useState(null)
+  const [items, setItems] = useState([])
 
-  // useEffect para obtener los productos de la API al montar el componente
+  // useEffect para obtener los productos de la API al montar el componente   
   useEffect(() => {
-    fetch("https://api.escuelajs.co/api/v1/products")
-    .then(response => response.json())
-    .then(data => setItems(data))
-
-    
-
+    const getProducts = async () => {
+      try {
+        const data = await fetchProducts(); // Llama a la función asíncrona y espera a que se resuelva
+        setItems(data); // Actualiza el estado con los datos obtenidos
+      } catch (error) {
+        console.error("Error fetching products:", error); // Manejo de errores
+      }
+    };
+  
+    getProducts();
   }, [])
 
 
