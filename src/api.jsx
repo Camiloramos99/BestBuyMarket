@@ -2,7 +2,6 @@
 
 export const fetchProducts = async () => {
     const response = await fetch("https://teststoreapi.onrender.com/productos");
-    console.log(response);
     const data = await response.json();
     return data;
   };
