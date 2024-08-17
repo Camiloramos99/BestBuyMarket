@@ -3,7 +3,9 @@ import { ShopingCartContext } from "../../Context";
 
 const Card = ({ data: { title, price, category, image } }) => {
 
-    const context = useContext(ShopingCartContext);
+    // Extract count and setCount from ShopingCartContext using useContext.
+    const { count, setCount } = useContext(ShopingCartContext)
+
 
     return (
         <article className="bg-white cursor-pointer h-60 w-56 rounded-lg">
@@ -14,7 +16,7 @@ const Card = ({ data: { title, price, category, image } }) => {
             <img className="w-full h-full object-cover rounded-lg" src={image} alt={title} />
 
             <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                onClick={() => context.setCount(context.count + 1)}> 
+                onClick={() => setCount(count + 1)}> 
                 + 
             </button>
 
