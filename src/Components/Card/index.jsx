@@ -4,11 +4,12 @@ import { ShopingCartContext } from "../../Context";
 const Card = ({ data: { title, price, category, image } }) => {
 
     // Extract count and setCount from ShopingCartContext using useContext.
-    const { count, setCount } = useContext(ShopingCartContext)
-
+    const { count, setCount, OpenProductDetail } = useContext(ShopingCartContext)
 
     return (
-        <article className="bg-white cursor-pointer h-60 w-56 rounded-lg">
+        <article className="bg-white cursor-pointer h-60 w-56 rounded-lg"
+        onClick={() => OpenProductDetail()}
+        >
             <figure className="relative mb-2 w-full h-4/5">
             <figcaption className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
                     {category}
