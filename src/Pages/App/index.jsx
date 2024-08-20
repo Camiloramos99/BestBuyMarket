@@ -31,8 +31,8 @@ const App = () => {
           <Navbar />
       </BrowserRouter>
     </ShopingCartProvider>
-
-  )
+  
+)
 }
 
 export default App
