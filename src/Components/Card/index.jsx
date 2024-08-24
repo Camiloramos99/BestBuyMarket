@@ -4,11 +4,16 @@ import { ShopingCartContext } from "../../Context";
 const Card = ({ data: { title, price, category, image } }) => {
 
     // Extract count and setCount from ShopingCartContext using useContext.
-    const { count, setCount, OpenProductDetail } = useContext(ShopingCartContext)
+    const { count, setCount, OpenProductDetail, setProductToShow } = useContext(ShopingCartContext)
+
+    const showProduct = (productDetail) => {
+        OpenProductDetail();
+        setProductToShow(productDetail);
+    }
 
     return (
         <article className="bg-white cursor-pointer h-60 w-56 rounded-lg"
-        onClick={() => OpenProductDetail()}
+            onClick={() => showProduct({title, price, category, image})}
         >
             <figure className="relative mb-2 w-full h-4/5">
             <figcaption className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
@@ -25,8 +30,8 @@ const Card = ({ data: { title, price, category, image } }) => {
                 }}>
                 
 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
             </button>
 

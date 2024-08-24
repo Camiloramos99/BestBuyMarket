@@ -8,12 +8,15 @@ export const ShopingCartProvider = ({children}) => {
 // Initialize the state for the shopping cart counter with useState, starting at zero.
     const [count, setCount] = useState(0);
 
+// Initialize the state to know if productDetail is open or not    
     const [IsProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
     const OpenProductDetail = () => setIsProductDetailOpen(true);
     
     const CloseProductDetail = () => setIsProductDetailOpen(false);
 
+// State to show product on productDetail
+    const [ProductToShow, setProductToShow] = useState({});
 
 
     return (
@@ -22,7 +25,9 @@ export const ShopingCartProvider = ({children}) => {
         setCount,
         OpenProductDetail,
         CloseProductDetail,
-        IsProductDetailOpen
+        IsProductDetailOpen,
+        ProductToShow,
+        setProductToShow
     }}>
         {children}
     </ShopingCartContext.Provider>
