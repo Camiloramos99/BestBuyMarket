@@ -3,12 +3,18 @@ import { ShopingCartContext } from "../../Context";
 
 const Card = ({ data: { title, price, category, image } }) => {
     // Extract count and setCount from ShopingCartContext using useContext.
-    const { count, setCount, OpenProductDetail, setProductToShow } = useContext(ShopingCartContext);
+    const { count, setCount, OpenProductDetail, setProductToShow, CartProducts, setCartProducts } = useContext(ShopingCartContext);
 
     const showProduct = (productDetail) => {
         OpenProductDetail();
         setProductToShow(productDetail);
     };
+
+    const addProductsToCart = (productData) => {
+        setCount(count + 1);
+        setCartProducts([...CartProducts, productData])
+        console.log("cart:", CartProducts);
+    }
 
     return (
         <article 
@@ -28,7 +34,7 @@ const Card = ({ data: { title, price, category, image } }) => {
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
                     onClick={(e) => {
                         e.stopPropagation(); // Prevents the product detail from opening when clicking in this area
-                        setCount(count + 1);
+                        addProductsToCart({ title, price, category, image })
                     }}
                 >
                     <svg 
