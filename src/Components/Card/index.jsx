@@ -3,16 +3,18 @@ import { ShopingCartContext } from "../../Context";
 
 const Card = ({ data: { title, price, category, image } }) => {
     // Extract count and setCount from ShopingCartContext using useContext.
-    const { count, setCount, OpenProductDetail, setProductToShow, CartProducts, setCartProducts } = useContext(ShopingCartContext);
+    const { count, setCount, OpenProductDetail, setProductToShow, CartProducts, setCartProducts, OpenCheckoutSideMenu, CloseCheckoutSideMenu } = useContext(ShopingCartContext);
 
     const showProduct = (productDetail) => {
+        CloseCheckoutSideMenu();
         OpenProductDetail();
         setProductToShow(productDetail);
     };
 
     const addProductsToCart = (productData) => {
         setCount(count + 1);
-        setCartProducts([...CartProducts, productData])
+        setCartProducts([...CartProducts, productData]);
+        OpenCheckoutSideMenu();
         console.log("cart:", CartProducts);
     }
 
@@ -43,7 +45,7 @@ const Card = ({ data: { title, price, category, image } }) => {
                         viewBox="0 0 24 24" 
                         strokeWidth="1.5" 
                         stroke="currentColor" 
-                        className="size-6"
+                        className="add-to-cart-icon size-6"
                     >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
