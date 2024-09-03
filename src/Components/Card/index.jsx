@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ShopingCartContext } from "../../Context";
 
-const Card = ({ data: { title, price, category, image } }) => {
+const Card = ({ data: { title, price, category, image, id } }) => {
     // Extract count and setCount from ShopingCartContext using useContext.
     const { count, setCount, OpenProductDetail, setProductToShow, CartProducts, setCartProducts, OpenCheckoutSideMenu, CloseCheckoutSideMenu } = useContext(ShopingCartContext);
 
@@ -13,11 +13,18 @@ const Card = ({ data: { title, price, category, image } }) => {
 
     const addProductsToCart = (productData) => {
         setCount(count + 1);
-        setCartProducts([...CartProducts, productData]);
+        const productoExistente = CartProducts.find(item => item.id === productData.id);
+            if (productoExistente) {
+                const updatedCart = CartProducts.map(item =>
+                    item.id === productData.id ? { ...item, cantidad: item.cantidad + 1 } : item
+                );
+                setCartProducts(updatedCart);
+            } else {
+                setCartProducts([...CartProducts, { ...productData, cantidad: 1 }]);
+            }
         OpenCheckoutSideMenu();
-        console.log("cart:", CartProducts);
-    }
-
+    }    
+    
     return (
         <article 
             className="bg-white cursor-pointer h-60 w-56 rounded-lg"
@@ -36,7 +43,7 @@ const Card = ({ data: { title, price, category, image } }) => {
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
                     onClick={(e) => {
                         e.stopPropagation(); // Prevents the product detail from opening when clicking in this area
-                        addProductsToCart({ title, price, category, image })
+                        addProductsToCart({ title, price, category, image, id })
                     }}
                 >
                     <svg 

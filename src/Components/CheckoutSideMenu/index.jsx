@@ -23,20 +23,20 @@ const CheckoutSideMenu = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
             </div>
-            <div className="px-6" >
-                {
-                    CartProducts.map(product => (
-                        <OrderCard 
-                            title={product.title}
-                            price={product.price}
-                            image={product.image}
-                        />
-                    ))
-                }
+            <div className="px-6">
+                {CartProducts.map(product => (
+                    <OrderCard 
+                        title={product.title}
+                        price={product.price}
+                        image={product.image}
+                        key={product.id}
+                        cantidad={product.cantidad} 
+                    />
+                ))}
             </div>
-        
         </aside>
     );
 }
 
 export default CheckoutSideMenu;
+

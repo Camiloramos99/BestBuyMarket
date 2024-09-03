@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ShopingCartContext } from "../../Context";
 
 
-const OrderCard = ({ title, price, image }) => {
+const OrderCard = ({ title, price, image, cantidad }) => {
     const { CloseCheckoutSideMenu } = useContext(ShopingCartContext);
 
     return (
@@ -12,15 +12,16 @@ const OrderCard = ({ title, price, image }) => {
                     <img className="w-full h-full rounded-lg object-cover" src={image} alt="" />
                     <p className="absolute top-[-10px] right-[-10px] bg-[#ac2ebb] 
                                   w-[20px] h-[20px] text-white rounded-full 
-                                  text-center text-[12px"
-                    > 2
+                                  text-[12px flex items-center justify-center"
+                    > {cantidad}
                     </p>
                 </figure>
                 <div>
                     <p className="text-sm font-light">{title}</p>
                     <div>
-                        <button class="inline-flex justify-center items-center text-center border border-[#ac2ebb]  opacity-75 
+                        <button className="inline-flex justify-center items-center text-center border border-[#ac2ebb]  opacity-75 
                                       border-r-0 rounded-tl-[5px] rounded-bl-[5px] h-[26px] min-w-[26px] p-0 font-inherit"
+                                      onClick={() => cantidad-1}
                         >-
                         </button>
                         <button className="inline-flex justify-center items-center text-center border border-[#ac2ebb]  border-l-0 opacity-75 
