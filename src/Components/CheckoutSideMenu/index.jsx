@@ -3,7 +3,12 @@ import { ShopingCartContext } from "../../Context";
 import OrderCard from "../OrderCard";
 
 const CheckoutSideMenu = () => {
-    const { IsProductDetailOpen, CloseProductDetail, ProductToShow, OpenCheckoutSideMenu, CloseCheckoutSideMenu, IsCheckoutSideMenuOpen, CartProducts } = useContext(ShopingCartContext);
+    const { IsProductDetailOpen, CloseProductDetail, ProductToShow, OpenCheckoutSideMenu, CloseCheckoutSideMenu, IsCheckoutSideMenuOpen, CartProducts, setCartProducts } = useContext(ShopingCartContext);
+
+    const HandleDelete = (id) => {
+        const filteredproducts = CartProducts.filter((product) => product.id !== id);
+        setCartProducts(filteredproducts);
+    }
 
     return (
         <aside 
@@ -32,6 +37,7 @@ const CheckoutSideMenu = () => {
                         key={product.id}
                         id={product.id}
                         cantidad={product.cantidad} 
+                        HandleDelete={HandleDelete}
                     />
                 ))}
             </div>

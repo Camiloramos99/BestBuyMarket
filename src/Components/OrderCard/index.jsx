@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ShopingCartContext } from "../../Context";
 
-const OrderCard = ({ id, title, price, image, cantidad }) => {
+const OrderCard = ({ id, title, price, image, cantidad, HandleDelete }) => {
     const { CloseCheckoutSideMenu, CartProducts, setCartProducts } = useContext(ShopingCartContext);
 
     const updateQuantity = (id, delta) => { 
@@ -16,7 +16,7 @@ const OrderCard = ({ id, title, price, image, cantidad }) => {
         <div className="flex justify-between items-center mb-3">
             <div className="flex items-center gap-2">
                 <figure className="relative w-20 h-20">
-                    <img className="w-full h-full rounded-lg object-cover" src={image} alt={id} />
+                    <img className="w-full h-full rounded-lg object-cover" src={image} alt=""/>
                     <p className="absolute top-[-10px] right-[-10px] bg-[#ac2ebb] 
                                   w-[20px] h-[20px] text-white rounded-full 
                                   text-[12px] flex items-center justify-center">
@@ -50,7 +50,7 @@ const OrderCard = ({ id, title, price, image, cantidad }) => {
                     strokeWidth="1.5" 
                     stroke="currentColor" 
                     className="size-6 cursor-pointer"
-                    onClick={() => CloseCheckoutSideMenu()}>
+                    onClick={() => HandleDelete(id)}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
             </div>
