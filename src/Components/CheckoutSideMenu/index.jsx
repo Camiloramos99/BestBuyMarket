@@ -4,11 +4,24 @@ import { totalPrice } from "../../utils";
 import OrderCard from "../OrderCard";
 
 const CheckoutSideMenu = () => {
-    const { IsProductDetailOpen, CloseProductDetail, ProductToShow, OpenCheckoutSideMenu, CloseCheckoutSideMenu, IsCheckoutSideMenuOpen, CartProducts, setCartProducts } = useContext(ShopingCartContext);
+    const { IsProductDetailOpen, CloseProductDetail, ProductToShow, OpenCheckoutSideMenu, CloseCheckoutSideMenu,
+            IsCheckoutSideMenuOpen, CartProducts, setCartProducts, setOrder, order
+          } = useContext(ShopingCartContext);
 
     const HandleDelete = (id) => {
         const filteredproducts = CartProducts.filter((product) => product.id !== id);
         setCartProducts(filteredproducts);
+    }
+
+    const handleCheckout = () => {
+        const orderToAdd = {
+            date: "07.09.2024",
+            products: CartProducts,
+            totalProducts: CartProducts.length,
+            totalPrice: totalPrice(CartProducts)
+        }
+        setOrder([...order, orderToAdd])
+        setCartProducts([])
     }
 
     return (
@@ -29,7 +42,7 @@ const CheckoutSideMenu = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
             </div>
-            <div className="px-6">
+            <div className="flex-1 px-6">
                 {CartProducts.map(product => (
                     <OrderCard 
                         title={product.title}
@@ -42,11 +55,13 @@ const CheckoutSideMenu = () => {
                     />
                 ))}
             </div>
-            <div className="px-6">
-                <p className="flex justify-between items-center">
+            <div className="px-6 py-5">
+                <p className="flex justify-between items-center mb-2">
                     <span className="font-light ">Total:</span>
-                    <span className="font-medium " >${totalPrice(CartProducts)}</span>
+                    <span className="font-medium ">${totalPrice(CartProducts)}</span>
                 </p>
+                <button className="place-self-center w-full h-10 rounded-lg bg-purple-500 text-white font-bold" 
+                        onClick={() => handleCheckout()} >Checkout</button>
             </div>
         </aside>
     );
