@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ShopingCartContext } from "../../Context";
 import { totalPrice } from "../../utils";
 import OrderCard from "../OrderCard";
@@ -20,8 +21,9 @@ const CheckoutSideMenu = () => {
             totalProducts: CartProducts.length,
             totalPrice: totalPrice(CartProducts)
         }
-        setOrder([...order, orderToAdd])
-        setCartProducts([])
+        setOrder([...order, orderToAdd]);
+        setCartProducts([]);
+        CloseCheckoutSideMenu();
     }
 
     return (
@@ -60,8 +62,11 @@ const CheckoutSideMenu = () => {
                     <span className="font-light ">Total:</span>
                     <span className="font-medium ">${totalPrice(CartProducts)}</span>
                 </p>
-                <button className="place-self-center w-full h-10 rounded-lg bg-purple-500 text-white font-bold" 
-                        onClick={() => handleCheckout()} >Checkout</button>
+                <Link to="/my-orders/last">
+                    <button className="place-self-center w-full h-10 rounded-lg bg-purple-500 text-white font-bold" 
+                            onClick={() => handleCheckout()} >Checkout</button>
+                </Link>
+                
             </div>
         </aside>
     );

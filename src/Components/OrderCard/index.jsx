@@ -12,6 +12,47 @@ const OrderCard = ({ id, title, price, image, cantidad, HandleDelete }) => {
         );
     };
 
+    let renderIconX;
+        if (HandleDelete) {
+            renderIconX = (
+                <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                strokeWidth="1.5" 
+                stroke="currentColor" 
+                className="size-6 cursor-pointer"
+                onClick={() => HandleDelete(id)}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+            )
+
+
+        }
+
+        let renderAddAndRestButtons;
+        if (HandleDelete) {
+            renderAddAndRestButtons = (
+            <section>
+                <button className="inline-flex justify-center items-center text-center border border-[#ac2ebb] opacity-75 
+                        border-r-0 rounded-tl-[5px] rounded-bl-[5px] h-[26px] min-w-[26px] p-0 font-inherit"
+                        onClick={() => { 
+                        updateQuantity(id, -1);
+                        }}>
+                        -
+                </button>
+                <button className="inline-flex justify-center items-center text-center border border-[#ac2ebb] border-l-0 opacity-75 
+                        rounded-tr-[5px] rounded-br-[5px] h-[26px] min-w-[26px] p-0 font-inherit"
+                        onClick={() => updateQuantity(id, 1)}>
+                        +
+                </button>
+            </section> 
+            )
+            
+
+
+        }
+
     return (
         <div className="flex justify-between items-center mb-3">
             <div className="flex items-center gap-2">
@@ -25,34 +66,12 @@ const OrderCard = ({ id, title, price, image, cantidad, HandleDelete }) => {
                 </figure>
                 <div>
                     <p className="text-sm font-light">{title}</p>
-                    <div>
-                        <button className="inline-flex justify-center items-center text-center border border-[#ac2ebb] opacity-75 
-                                      border-r-0 rounded-tl-[5px] rounded-bl-[5px] h-[26px] min-w-[26px] p-0 font-inherit"
-                                onClick={() => { 
-                                    updateQuantity(id, -1);
-                                }}>
-                            -
-                        </button>
-                        <button className="inline-flex justify-center items-center text-center border border-[#ac2ebb] border-l-0 opacity-75 
-                                           rounded-tr-[5px] rounded-br-[5px] h-[26px] min-w-[26px] p-0 font-inherit"
-                                onClick={() => updateQuantity(id, 1)}>
-                            +
-                        </button>
-                    </div>
+                    { renderAddAndRestButtons }
                 </div>
             </div>
             <div className="flex items-center gap-2">
                 <p className="text-lg font-medium">{price}</p>
-                <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    strokeWidth="1.5" 
-                    stroke="currentColor" 
-                    className="size-6 cursor-pointer"
-                    onClick={() => HandleDelete(id)}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
+                { renderIconX }
             </div>
         </div>
     );
