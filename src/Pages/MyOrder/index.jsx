@@ -8,7 +8,12 @@ import { Link } from "react-router-dom"
 function MyOrder() {
   const { order } = useContext(ShopingCartContext);
 
-  const lastOrder = order?.slice(-1)[0];
+  const orderPath = window.location.pathname;
+  // Extrae desde el índice de "("/") + 1" hasta el final
+  let index = orderPath.substring(orderPath.lastIndexOf("/") + 1);
+  if (index === "last") index = order?.length - 1;
+
+  
 
     return (
       <Layout>
@@ -30,7 +35,7 @@ function MyOrder() {
 
             <div className="flex flex-col w-80">
                 {
-                  lastOrder?.products.map(product => (
+                  order?.[index]?.products.map(product => (
                     <OrderCard 
                         key={product.id}
                         title={product.title}
