@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { fetchProducts } from "../api"
+
 
 export const ShopingCartContext = createContext();
 
@@ -27,6 +29,20 @@ export const ShopingCartProvider = ({ children }) => {
     // State to ShoppingCart order
     const [order, setOrder] = useState([]);
 
+    // State to Get products
+    const [items, setItems] = useState([])
+
+    useEffect(() => {
+        const getProducts = async () => {
+        try {
+            const data = await fetchProducts(); // Llama a la función asíncrona y espera a que se resuelva
+            setItems(data); // Actualiza el estado con los datos obtenidos
+        } catch (error) {
+            console.error("Error fetching products:", error); // Manejo de errores
+        }}; 
+            getProducts();
+    }, [])
+
     return (
         <ShopingCartContext.Provider value={{
             count,
@@ -42,7 +58,9 @@ export const ShopingCartProvider = ({ children }) => {
             CloseCheckoutSideMenu,
             IsCheckoutSideMenuOpen,
             order,
-            setOrder
+            setOrder,
+            items,
+            setItems
         }}>
             {children}
         </ShopingCartContext.Provider>
