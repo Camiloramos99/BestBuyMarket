@@ -30,7 +30,10 @@ export const ShopingCartProvider = ({ children }) => {
     const [order, setOrder] = useState([]);
 
     // State to Get products
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState(null)
+
+    // Get products by title
+    const [searchByTitle , setSearchByTitle ] = useState(null)
 
     useEffect(() => {
         const getProducts = async () => {
@@ -42,6 +45,8 @@ export const ShopingCartProvider = ({ children }) => {
         }}; 
             getProducts();
     }, [])
+
+
 
     return (
         <ShopingCartContext.Provider value={{
@@ -60,7 +65,9 @@ export const ShopingCartProvider = ({ children }) => {
             order,
             setOrder,
             items,
-            setItems
+            setItems,
+            searchByTitle,
+            setSearchByTitle
         }}>
             {children}
         </ShopingCartContext.Provider>
