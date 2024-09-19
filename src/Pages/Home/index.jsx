@@ -7,6 +7,28 @@ import { ShopingCartContext } from "../../Context";
 function Home() {
   const Context = useContext(ShopingCartContext);
 
+  const renderView = () => {
+    if (Context.searchByTitle?.length > 0) {
+      if (Context.filteredItems?.length > 0) {
+        return (
+          Context.filteredItems?.map(item => (
+            <Card key={item.id} data={item} />
+          ))
+        ) 
+      } else {
+        return (
+          <div>We couldn’t find any matching products.</div>
+        )
+      }
+    } else {
+      return (
+        // Mapeo de los productos para renderizar un componente Card por cada uno
+        Context.items?.map(item => (
+          <Card key={item.id} data={item} />
+        ))
+      )
+    }
+  }
     return (
       <Layout>
       <div className="flex items-center justify-center relative w-80">
@@ -20,12 +42,7 @@ function Home() {
         />
 
       <section className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
-        {
-          // Mapeo de los productos para renderizar un componente Card por cada uno
-          Context.items?.map(item => (
-            <Card key={item.id} data={item} />
-          ))
-        }
+        { renderView() }
       </section>
         <ProductDetail />
       </Layout>
