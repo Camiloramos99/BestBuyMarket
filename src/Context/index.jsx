@@ -32,15 +32,23 @@ export const ShopingCartProvider = ({ children }) => {
     // State to Get products
     const [items, setItems] = useState(null);
 
-    // Get products by title
-    const [searchByTitle , setSearchByTitle ] = useState(null);
-
     // Get products filtered
     const [filteredItems , setFilteredItems ] = useState(null);
 
-    const filteredItemsByTitle = (items, searchByTitle) => {
-        return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()));        
-    }
+    // State to manage the search query input
+    const [searchQuery, setSearchQuery] = useState("");
+
+    // Function to filter items based on the search query
+    const filterItems = (items, query) => {
+        if (!query) return items;
+        const lowerCaseQuery = query.toLowerCase();
+    // Filter the items array based on whether the item's title or category includes the query
+        return items?.filter(item => 
+            item.title.toLowerCase().includes(lowerCaseQuery) || 
+            item.category.toLowerCase().includes(lowerCaseQuery)
+        );
+    };
+
 
     useEffect(() => {
         const getProducts = async () => {
@@ -53,11 +61,11 @@ export const ShopingCartProvider = ({ children }) => {
             getProducts();
     }, [])
 
-    useEffect(() => {
-        if (searchByTitle) setFilteredItems(filteredItemsByTitle(items, searchByTitle))
-    }, [items, searchByTitle])
 
-    console.log("filteredItems:", filteredItems);
+    useEffect(() => {
+        setFilteredItems(filterItems(items, searchQuery));
+    }, [items, searchQuery]);
+
     return (
         <ShopingCartContext.Provider value={{
             count,
@@ -76,8 +84,8 @@ export const ShopingCartProvider = ({ children }) => {
             setOrder,
             items,
             setItems,
-            searchByTitle,
-            setSearchByTitle,
+            searchQuery,
+            setSearchQuery,
             filteredItems
         }}>
             {children}
