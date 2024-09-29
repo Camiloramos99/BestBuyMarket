@@ -38,14 +38,18 @@ export const ShopingCartProvider = ({ children }) => {
     // State to manage the search query input
     const [searchQuery, setSearchQuery] = useState("");
 
+    // State to manage the category state
+    const [selectedCategory, setSelectedCategory] = useState("");
+
     // Function to filter items based on the search query
-    const filterItems = (items, query) => {
-        if (!query) return items;
+    const filterItems = (items, query, category) => {
+        if (!query && !category) return items;
         const lowerCaseQuery = query.toLowerCase();
     // Filter the items array based on whether the item's title or category includes the query
         return items?.filter(item => 
-            item.title.toLowerCase().includes(lowerCaseQuery) || 
-            item.category.toLowerCase().includes(lowerCaseQuery)
+            (item.title.toLowerCase().includes(lowerCaseQuery) || 
+            item.category.toLowerCase().includes(lowerCaseQuery)) &&
+            (!category || item.category.toLowerCase() === category.toLowerCase())//Pasa este filtro si la url es vacia la categoria o null y solo pasaran los items que la categoria sea igual a la del link(category)
         );
     };
 
@@ -63,8 +67,8 @@ export const ShopingCartProvider = ({ children }) => {
 
 
     useEffect(() => {
-        setFilteredItems(filterItems(items, searchQuery));
-    }, [items, searchQuery]);
+        setFilteredItems(filterItems(items, searchQuery, selectedCategory));
+    }, [items, searchQuery, selectedCategory]);
 
     return (
         <ShopingCartContext.Provider value={{
@@ -86,7 +90,8 @@ export const ShopingCartProvider = ({ children }) => {
             setItems,
             searchQuery,
             setSearchQuery,
-            filteredItems
+            filteredItems,
+            setSelectedCategory
         }}>
             {children}
         </ShopingCartContext.Provider>

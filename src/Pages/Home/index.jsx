@@ -1,31 +1,28 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import Layout from "../../Components/Layout"
 import Card from "../../Components/Card"
 import ProductDetail from "../../Components/ProductDetail"
+import { useParams } from "react-router-dom";
 import { ShopingCartContext } from "../../Context";
 
 function Home() {
-  const { searchQuery , setSearchQuery, filteredItems, items } = useContext(ShopingCartContext);
+  const { category } = useParams();
+  const { searchQuery , setSearchQuery, filteredItems, items, setSelectedCategory } = useContext(ShopingCartContext);
 
+  // Update selected category when 'category' changes
+  useEffect(() => {
+    setSelectedCategory(category || "");
+  }, [category, setSelectedCategory]);
+  
 const renderView = () => {
-  if (searchQuery?.length > 0) {
-      if (filteredItems?.length > 0) {
-          return (
-              filteredItems.map(item => (
-                  <Card key={item.id} data={item} />
-              ))
-          );
-      } else {
-          return (
-              <div>We couldn’t find any matching products.</div>
-          );
-      }
+  if (filteredItems?.length > 0) {
+    return filteredItems.map(item => (
+      <Card key={item.id} data={item} />
+    ));
   } else {
-      return (
-          items?.map(item => (
-              <Card key={item.id} data={item} />
-          ))
-      );
+    return (
+      <div>We couldn’t find any matching products.</div>
+    );
   }
 };
 
