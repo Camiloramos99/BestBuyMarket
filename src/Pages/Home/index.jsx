@@ -7,7 +7,7 @@ import { ShopingCartContext } from "../../Context";
 
 function Home() {
   const { category } = useParams();
-  const { searchQuery , setSearchQuery, filteredItems, items, setSelectedCategory } = useContext(ShopingCartContext);
+  const { searchQuery , setSearchQuery, filteredItems, setSelectedCategory } = useContext(ShopingCartContext);
 
   // Update selected category when 'category' changes
   useEffect(() => {
@@ -38,6 +38,7 @@ const handleInputChange = (event) => {
       </div>
       <input 
           type="text"  
+          value={searchQuery}
           placeholder="Search a product" 
           className="w-80 rounded-lg border border-black p-4 mb-4 " 
           onChange={handleInputChange}

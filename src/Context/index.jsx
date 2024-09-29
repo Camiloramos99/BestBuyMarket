@@ -1,5 +1,7 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, u } from "react";
 import { fetchProducts } from "../api"
+import { useLocation } from 'react-router-dom';
+
 
 
 export const ShopingCartContext = createContext();
@@ -69,6 +71,16 @@ export const ShopingCartProvider = ({ children }) => {
     useEffect(() => {
         setFilteredItems(filterItems(items, searchQuery, selectedCategory));
     }, [items, searchQuery, selectedCategory]);
+
+    useEffect(() => {
+        // Limpia la búsqueda cuando cambia la ruta
+        setSearchQuery("");
+    }, [location.pathname]);
+
+
+    
+
+
 
     return (
         <ShopingCartContext.Provider value={{
