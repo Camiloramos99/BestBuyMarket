@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'text-input-field': '#F7F7F7',
+       },
+    },
   },
   plugins: [],
 }
