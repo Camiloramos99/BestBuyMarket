@@ -6,7 +6,7 @@ function SignIn() {
         <div className="flex items-center justify-center relative w-full h-[calc(100vh-80px)]">
           <div className="login-container flex flex-col h-full w-80 ">
             <form action="/" 
-                  className="form flex flex-col mt-1 h-full w-full" >
+                  className="form flex flex-col mt-10 h-full w-full" >
               <label 
                   htmlFor="email" 
                   className="font-medium font-sans mb-1"
@@ -20,7 +20,7 @@ function SignIn() {
               
               <label 
                   htmlFor="password" 
-                  className="font-medium font-sans mb-1"
+                  className="font-medium font-sans mb-4"
                   >Password
               </label>
               <input 
