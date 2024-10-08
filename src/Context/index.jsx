@@ -6,7 +6,37 @@ import { useLocation } from 'react-router-dom';
 
 export const ShopingCartContext = createContext();
 
+export const InitializeLocalStorage = () => {
+    const accountInLocalStorage = localStorage.getItem("account");
+    const signOutInLocalStorage = localStorage.getItem("sign-out");
+    let parsedAccount                            
+    let parsedSignOut
+    
+    if (!accountInLocalStorage) {
+        localStorage.setItem('account', JSON.stringify({}))     //establece y guarda objeto vacio({}) como cadena de texto JSON
+        parsedAccount = {}                                      
+    } else {
+        parsedAccount = JSON.parse(accountInLocalStorage)       //convierte esa cadena de texto en un objeto
+    }
+    
+    if (!signOutInLocalStorage) {
+        localStorage.setItem('sign-out', JSON.stringify(false))
+        parsedSignOut = false
+    } else {
+        parsedSignOut = JSON.parse(signOutInLocalStorage)
+    }
+}
+
 export const ShopingCartProvider = ({ children }) => {
+
+    // My Account
+    const [account, setAccount] = useState({});
+
+    // Sign out
+    const [signOut, setSignOut] = useState(false);
+
+
+
     // Initialize the state for the shopping cart counter with useState, starting at zero.
     const [count, setCount] = useState(0);
 
@@ -103,7 +133,11 @@ export const ShopingCartProvider = ({ children }) => {
             searchQuery,
             setSearchQuery,
             filteredItems,
-            setSelectedCategory
+            setSelectedCategory,
+            account,
+            setAccount,
+            signOut,
+            setSignOut
         }}>
             {children}
         </ShopingCartContext.Provider>
