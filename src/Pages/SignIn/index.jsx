@@ -22,40 +22,40 @@ function SignIn() {
                   className="form flex flex-col mt-3 h-full w-full" >
               <label 
                   htmlFor="email" 
-                  className="font-normal font-sans mb-1"
+                  className="text-sm font-semibold font-sans mb-1"
                   >Email
                 </label>
               <input 
                   type="text" 
                   id="email" 
-                  placeholder={parsedAccount?.email || "Enter your email"}
+                  placeholder={parsedAccount?.email || "your email"}
                   className="input input-email bg-text-input-field text-base rounded-lg h-10 p-2 mb-5 " />
               
               <label 
                   htmlFor="password" 
-                  className="font-normal font-sans mb-4"
+                  className="text-sm font-semibold font-sans mb-1"
                   >Password
               </label>
               <input 
                   type="password" 
                   id="password"   
-                  placeholder={parsedAccount?.password || "Enter your password"} 
-                  className=" bg-text-input-field text-base rounded-lg h-10 p-2 mb-5 "/>
+                  placeholder={parsedAccount?.password || "your password"} 
+                  className=" bg-text-input-field text-base rounded-lg h-10 p-2 mb-6 "/>
  
               <button 
-                  className="place-self-center font-bold bg-purple-500 text-white rounded-lg h-12 w-full mb-7"
+                  className="place-self-center font-bold bg-purple-500 text-white rounded-lg h-12 w-full mb-4"
                   disabled={!hasUserAnAccount}>
                     Log in
               </button>
-              <a href="/" className="flex self-center text-base font-thin text-purple-500 mb-5" >Forgot my password</a>
-            
-            </form>
 
-          <button 
-              className="place-self-center font-bold border-x border-y border-purple-500 bg-white text-purple-500 rounded-lg h-16 w-full mb-24 " 
-              disabled={hasUserAnAccount}>
-              Sign up
-          </button>
+              <a href="/" className="flex self-center text-sm font-sans text-purple-500 mb-4" >Forgot my password</a>  
+
+              <button 
+                  className="place-self-center font-bold border-x border-y border-purple-500 bg-white text-purple-500 rounded-lg h-12 w-full mb-24 " 
+                  disabled={hasUserAnAccount}>
+                  Sign up
+              </button>
+          </form>
           </div>     
         </div>   
       </Layout>
