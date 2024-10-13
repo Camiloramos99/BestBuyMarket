@@ -64,15 +64,6 @@ const Navbar = () => {
                     Sign out
                 </NavLink>
             </li>
-            <li>
-                <NavLink 
-                    to="/sign-up"
-                    className={({ isActive }) =>    
-                        isActive ? activeStyle : undefined      
-                    }>  
-                    Sign Up
-                </NavLink>
-            </li>
            </>
     )  }}
 
