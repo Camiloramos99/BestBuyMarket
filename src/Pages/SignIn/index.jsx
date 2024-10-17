@@ -1,11 +1,13 @@
 import { useContext, useState, useRef } from "react";
 import Layout from "../../Components/Layout";
+import { Link, useNavigate } from 'react-router-dom'
 import { ShopingCartContext } from "../../Context";
 
 function SignIn() {
-  const { account } = useContext(ShopingCartContext); 
+  const { account, setSignOut, setAccount } = useContext(ShopingCartContext); 
   const [view, setView] = useState("user-info");
   const form = useRef(null)
+  const navigate = useNavigate();
 
   //Account
   const accountInLocalStorage = localStorage.getItem("account");
@@ -14,6 +16,14 @@ function SignIn() {
   const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true;
   const noAccountInLocalState = account ? Object.keys(account).length === 0 : true;
   const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+
+  const handleSignIn = () => {
+    const stringifiedSignOut = JSON.stringify(false);
+    localStorage.setItem('sign-out', stringifiedSignOut);
+    setSignOut(false);
+    // Redirect 
+    navigate('/');
+  };
 
 
   const createAnAccount = (event) => {
@@ -24,7 +34,14 @@ function SignIn() {
         email: formData.get('email'),
         password: formData.get('password')
       }
-    }
+
+      //Create account
+      const stingifiedAccount = JSON.stringify(data);
+      localStorage.setItem("account", stingifiedAccount);
+      setAccount(data);
+      //Sign in
+      handleSignIn()
+  }
   
 
   const renderLogIn = () => {
@@ -46,11 +63,15 @@ function SignIn() {
             placeholder={parsedAccount?.password || "your password"} 
             className=" bg-text-input-field text-base rounded-lg h-10 p-2 mb-6 "
         />
-        <button 
-            className="place-self-center font-bold bg-purple-500 text-white rounded-lg h-12 w-full mb-4"
-            disabled={!hasUserAnAccount}>
-              Log in
-        </button>
+        <Link to="/">
+          <button 
+              className="place-self-center font-bold bg-purple-500 text-white rounded-lg h-12 w-full mb-4"
+              onClick={ () => handleSignIn() }
+              disabled={!hasUserAnAccount}>
+                Log in
+          </button>
+        </Link>
+        
 
         <a href="/" className="flex self-center text-sm font-sans text-purple-500 mb-4" >Forgot my password</a>  
 
