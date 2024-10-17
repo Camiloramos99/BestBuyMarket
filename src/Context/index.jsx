@@ -139,6 +139,7 @@ export const ShopingCartProvider = ({ children }) => {
             account,
             setAccount,
             parsedAccount,
+            setParsedAccount,
             signOut,
             setSignOut,
             hasUserAnAccount

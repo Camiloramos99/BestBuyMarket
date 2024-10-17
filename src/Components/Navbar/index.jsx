@@ -25,7 +25,7 @@ const Navbar = () => {
           return (
            <>
             <li className="text-black/60">
-                BestBuyMarket@gmail.com
+                {parsedAccount?.email}
             </li>
             <li>
                 <NavLink 
