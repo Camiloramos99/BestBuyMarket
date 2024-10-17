@@ -1,8 +1,5 @@
-import { createContext, useState, useEffect, u } from "react";
+import { createContext, useState, useEffect} from "react";
 import { fetchProducts } from "../api"
-import { useLocation } from 'react-router-dom';
-
-
 
 export const ShopingCartContext = createContext();
 
@@ -32,10 +29,11 @@ export const ShopingCartProvider = ({ children }) => {
     // My Account
     const [account, setAccount] = useState({});
 
+    const [hasUserAnAccount, setHasUserAnAccount] = useState(false);
+    const [parsedAccount, setParsedAccount] = useState({});
+
     // Sign out
     const [signOut, setSignOut] = useState(false);
-
-
 
     // Initialize the state for the shopping cart counter with useState, starting at zero.
     const [count, setCount] = useState(0);
@@ -85,7 +83,6 @@ export const ShopingCartProvider = ({ children }) => {
         );
     };
 
-
     useEffect(() => {
         const getProducts = async () => {
         try {
@@ -97,7 +94,6 @@ export const ShopingCartProvider = ({ children }) => {
             getProducts();
     }, [])
 
-
     useEffect(() => {
         setFilteredItems(filterItems(items, searchQuery, selectedCategory));
     }, [items, searchQuery, selectedCategory]);
@@ -107,10 +103,16 @@ export const ShopingCartProvider = ({ children }) => {
         setSearchQuery("");
     }, [location.pathname]);
 
-
-    
-
-
+    useEffect(() => {
+        //Account
+        const accountInLocalStorage = localStorage.getItem("account");
+        const parsed = accountInLocalStorage ? JSON.parse(accountInLocalStorage) : {};
+        setParsedAccount(parsed);
+        //Has an account
+        const noAccountInLocalStorage = Object.keys(parsedAccount).length === 0;
+        const noAccountInLocalState = account ? Object.keys(account).length === 0 : true;
+        setHasUserAnAccount(!noAccountInLocalStorage || !noAccountInLocalState);
+    }, [account]);
 
     return (
         <ShopingCartContext.Provider value={{
@@ -136,8 +138,10 @@ export const ShopingCartProvider = ({ children }) => {
             setSelectedCategory,
             account,
             setAccount,
+            parsedAccount,
             signOut,
-            setSignOut
+            setSignOut,
+            hasUserAnAccount
         }}>
             {children}
         </ShopingCartContext.Provider>

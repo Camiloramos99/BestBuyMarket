@@ -4,18 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ShopingCartContext } from "../../Context";
 
 function SignIn() {
-  const { account, setSignOut, setAccount } = useContext(ShopingCartContext); 
+  const { account, setSignOut, setAccount, parsedAccount, hasUserAnAccount } = useContext(ShopingCartContext); 
   const [view, setView] = useState("user-info");
   const form = useRef(null)
   const navigate = useNavigate();
-
-  //Account
-  const accountInLocalStorage = localStorage.getItem("account");
-  const parsedAccount = JSON.parse(accountInLocalStorage);
-  //Has an account
-  const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true;
-  const noAccountInLocalState = account ? Object.keys(account).length === 0 : true;
-  const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
 
   const handleSignIn = () => {
     const stringifiedSignOut = JSON.stringify(false);
