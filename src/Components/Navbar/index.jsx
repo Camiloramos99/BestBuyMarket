@@ -5,12 +5,22 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
     const activeStyle = "underline underline-offset-4"
     //Extract count from ShopingCartContext using useContext.
-    const { CartProducts, signOut, setSignOut } = useContext(ShopingCartContext);
+    const { CartProducts, signOut, setSignOut, account } = useContext(ShopingCartContext);
 
     //Is user sign out?.
     const signOutInLocalStorage  = localStorage.getItem("sign-out");
     const parsedSignOut = JSON.parse(signOutInLocalStorage);
     const isUserSignOut = parsedSignOut || signOut;
+
+    //Account
+    const accountInLocalStorage = localStorage.getItem("account");
+    const parsedAccount = JSON.parse(accountInLocalStorage);
+    //Has an account
+    const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true;
+    const noAccountInLocalState = account ? Object.keys(account).length === 0 : true;
+    const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState;
+
+
 
     const handleSignOut = () => {
         const stringifiedSignOut = JSON.stringify(true);
@@ -19,18 +29,7 @@ const Navbar = () => {
     }
 
     const renderView = () => {
-        if (isUserSignOut) {
-          return (
-            <li>
-              <NavLink
-                to="/sign-in"
-                className={({ isActive }) => isActive ? activeStyle : undefined }
-                onClick={() => handleSignOut()}>
-                Sign out
-              </NavLink>
-            </li>
-          )
-        } else {
+        if (hasUserAnAccount && !isUserSignOut) {
           return (
            <>
             <li className="text-black/60">
@@ -65,7 +64,20 @@ const Navbar = () => {
                 </NavLink>
             </li>
            </>
-    )  }}
+          )
+        } else {
+            return (
+                <li>
+                <NavLink
+                    to="/sign-in"
+                    className={({ isActive }) => isActive ? activeStyle : undefined }
+                    onClick={() => handleSignOut()}>
+                    Sign in
+                </NavLink>
+                </li>
+            )
+          }
+        } 
 
 
     return (
@@ -73,7 +85,7 @@ const Navbar = () => {
             <ul className="flex items-center gap-3" >
                 <li className="font-semibold text-lg">
                     <NavLink 
-                        to="/">
+                        to={`${isUserSignOut ? '/sign-in' : '/'}`}>
                         BestBuyMarket
                     </NavLink>
                 </li>
