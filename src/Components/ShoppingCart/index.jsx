@@ -3,11 +3,11 @@ import { ShopingCartContext } from "../../Context";
 
 
 const ShoppingCart = () => {
-    const { CartProducts, OpenCheckoutSideMenu } = useContext(ShopingCartContext);
+    const { CartProducts, toggleCheckoutSideMenu } = useContext(ShopingCartContext);
     return (
       <li 
         className="relative"
-        onClick={() => OpenCheckoutSideMenu()}>
+        onClick={() => toggleCheckoutSideMenu()}>
         <svg
           className="absolute size-6"
           xmlns="http://www.w3.org/2000/svg"

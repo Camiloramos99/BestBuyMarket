@@ -71,6 +71,14 @@ export const ShopingCartProvider = ({ children }) => {
     // State to manage the category state
     const [selectedCategory, setSelectedCategory] = useState("");
 
+    const toggleCheckoutSideMenu = () => {
+        if (IsCheckoutSideMenuOpen) {
+          CloseCheckoutSideMenu();
+        } else {
+          OpenCheckoutSideMenu();
+        }
+    };
+
     // Function to filter items based on the search query
     const filterItems = (items, query, category) => {
         if (!query && !category) return items;
@@ -142,7 +150,8 @@ export const ShopingCartProvider = ({ children }) => {
             setParsedAccount,
             signOut,
             setSignOut,
-            hasUserAnAccount
+            hasUserAnAccount,
+            toggleCheckoutSideMenu
         }}>
             {children}
         </ShopingCartContext.Provider>

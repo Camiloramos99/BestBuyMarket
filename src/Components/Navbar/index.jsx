@@ -73,7 +73,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="flex justify-between items-center fixed w-full z-10 top-0 py-5 px-8 h-[68px] text-sm font-light">
+        <nav className="flex justify-between items-center bg-white fixed w-full z-10 top-0 py-5 px-8 h-[68px] text-sm font-light">
             <ul className="flex items-center gap-3" >
                 <li className="font-semibold text-lg">
                     <NavLink 
