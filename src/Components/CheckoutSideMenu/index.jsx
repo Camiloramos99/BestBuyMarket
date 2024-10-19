@@ -1,13 +1,15 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { ShopingCartContext } from "../../Context";
 import { totalPrice } from "../../utils";
 import OrderCard from "../OrderCard";
 
 const CheckoutSideMenu = () => {
     const { IsProductDetailOpen, CloseProductDetail, ProductToShow, OpenCheckoutSideMenu, CloseCheckoutSideMenu,
-            IsCheckoutSideMenuOpen, CartProducts, setCartProducts, setOrder, order
+            IsCheckoutSideMenuOpen, CartProducts, setCartProducts, setOrder, order, signOut
           } = useContext(ShopingCartContext);
+    
+    const navigate = useNavigate();
 
     const HandleDelete = (id) => {
         const filteredproducts = CartProducts.filter((product) => product.id !== id);
@@ -24,6 +26,12 @@ const CheckoutSideMenu = () => {
         setOrder([...order, orderToAdd]);
         setCartProducts([]);
         CloseCheckoutSideMenu();
+        
+        if (signOut) {
+            navigate('/sign-in');
+        } else {
+            navigate('/my-orders/last');
+        } 
     }
 
     return (
@@ -62,10 +70,12 @@ const CheckoutSideMenu = () => {
                     <span className="font-light ">Total:</span>
                     <span className="font-medium ">${totalPrice(CartProducts)}</span>
                 </p>
-                <Link to="/my-orders/last">
-                    <button className="place-self-center w-full h-10 rounded-lg bg-purple-500 text-white font-bold" 
-                            onClick={() => handleCheckout()} >Checkout</button>
-                </Link>
+                    <button 
+                        className="place-self-center w-full h-10 rounded-lg bg-purple-500 text-white font-bold"
+                        onClick={handleCheckout}
+                    >
+                        Checkout
+                    </button>
                 
             </div>
         </aside>

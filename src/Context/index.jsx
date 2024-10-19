@@ -33,7 +33,7 @@ export const ShopingCartProvider = ({ children }) => {
     const [parsedAccount, setParsedAccount] = useState({});
 
     // Sign out
-    const [signOut, setSignOut] = useState(false);
+    const [signOut, setSignOut] = useState(true);
 
     // Initialize the state for the shopping cart counter with useState, starting at zero.
     const [count, setCount] = useState(0);
@@ -121,6 +121,7 @@ export const ShopingCartProvider = ({ children }) => {
         const noAccountInLocalState = account ? Object.keys(account).length === 0 : true;
         setHasUserAnAccount(!noAccountInLocalStorage || !noAccountInLocalState);
     }, [account]);
+    
 
     return (
         <ShopingCartContext.Provider value={{
@@ -151,7 +152,7 @@ export const ShopingCartProvider = ({ children }) => {
             signOut,
             setSignOut,
             hasUserAnAccount,
-            toggleCheckoutSideMenu
+            toggleCheckoutSideMenu,
         }}>
             {children}
         </ShopingCartContext.Provider>
