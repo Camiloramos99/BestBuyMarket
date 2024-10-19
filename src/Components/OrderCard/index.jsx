@@ -12,6 +12,15 @@ const OrderCard = ({ id, title, price, image, cantidad, HandleDelete }) => {
         );
     };
 
+    const handleDecrease = () => {
+        if(cantidad > 1) {
+            updateQuantity(id, -1);
+        } else {
+            HandleDelete(id);
+        }
+    };
+
+
     let renderIconX;
         if (HandleDelete) {
             renderIconX = (
@@ -34,9 +43,7 @@ const OrderCard = ({ id, title, price, image, cantidad, HandleDelete }) => {
         <section>
             <button className="inline-flex justify-center items-center text-center border border-[#ac2ebb] opacity-75 
                     border-r-0 rounded-tl-[5px] rounded-bl-[5px] h-[26px] min-w-[26px] p-0 font-inherit"
-                    onClick={() => { 
-                    updateQuantity(id, -1);
-                    }}>
+                    onClick={handleDecrease}>
                     -
             </button>
             <button className="inline-flex justify-center items-center text-center border border-[#ac2ebb] border-l-0 opacity-75 
