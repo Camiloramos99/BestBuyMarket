@@ -75,10 +75,14 @@ const Navbar = () => {
         <nav className="flex justify-between items-center bg-white fixed w-full z-10 top-0 py-5 px-8 h-[68px] text-sm font-light">
             <ul className="flex items-center gap-3" >
                 <li className="font-semibold text-lg">
-
                     <NavLink 
                         to="/"
-                        >BestBuyMarket
+                        className="text-xl font-semibold text-[#4A90E2] shadow-sm bg-gradient-to-r from-[#4a91e269] to-[#50e3c371] bg-opacity-30 px-3 py-1 rounded-lg hover:text-white transition duration-300 ease-in-out">
+                        BestBuyMarket
+
+
+
+
                     </NavLink>
                 </li>
                 <li>

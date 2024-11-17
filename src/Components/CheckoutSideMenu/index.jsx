@@ -71,7 +71,7 @@ const CheckoutSideMenu = () => {
                     <span className="font-medium ">${totalPrice(CartProducts)}</span>
                 </p>
                     <button 
-                        className="place-self-center w-full h-10 rounded-lg bg-purple-500 text-white font-bold"
+                        className="place-self-center w-full h-10 rounded-lg text-white shadow-sm bg-gradient-to-r from-[#4a91e2] to-[#50e3c3] font-bold"
                         onClick={handleCheckout}
                     >
                         Checkout

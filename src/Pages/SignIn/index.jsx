@@ -57,7 +57,7 @@ function SignIn() {
         />
         <Link to="/">
           <button 
-              className="place-self-center font-bold bg-purple-500 text-white rounded-lg h-12 w-full mb-4"
+              className="place-self-center text-white shadow-sm bg-gradient-to-r from-[#4a91e2] to-[#50e3c3] font-bold rounded-lg h-12 w-full mb-4"
               onClick={ () => handleSignIn() }
               disabled={!hasUserAnAccount}>
                 Log in
@@ -65,10 +65,10 @@ function SignIn() {
         </Link>
         
 
-        <a href="/" className="flex self-center text-sm font-sans text-purple-500 mb-4" >Forgot my password</a>  
+        <a href="/" className="flex self-center text-sm font-sans text-[#4a91e2] text-500 mb-4" >Forgot my password</a>  
 
         <button 
-            className="place-self-center font-bold border-x border-y border-purple-500 bg-white text-purple-500 rounded-lg h-12 w-full mb-24 cursor-pointer "      
+            className="place-self-center font-bold text-[#4a91e2]  border border-[#4a91e2] shadow-sm bg-white rounded-lg h-12 w-full mb-24 cursor-pointer "      
             onClick={() => setView("create-user-info")}
             disabled={hasUserAnAccount}>
             Sign up
@@ -115,7 +115,7 @@ function SignIn() {
                 />
     
                 <button 
-                    className="place-self-center font-bold bg-purple-500 text-white rounded-lg h-12 w-full mt-6 mb-7" type="submit"
+                    className="place-self-center font-bold bg-gradient-to-r from-[#4a91e2] to-[#50e3c3] text-white rounded-lg h-12 w-full mt-6 mb-7" type="submit"
                     >Create 
                 </button>   
                 </form>

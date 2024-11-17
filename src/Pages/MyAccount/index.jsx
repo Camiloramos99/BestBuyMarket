@@ -36,7 +36,7 @@ function MyAccount() {
               <span>{parsedAccount?.email}</span>
             </p>
             <button
-              className='border border-black rounded-lg mt-6 py-3'
+              className='border border-[#4a91e2] rounded-lg mt-6 py-3'
               onClick={() => setView('edit-user-info')}>
               Edit
             </button>
@@ -77,7 +77,7 @@ function MyAccount() {
             />
 
             <button 
-                className="place-self-center font-bold bg-purple-500 text-white rounded-lg h-12 w-full mt-6 mb-7"
+                className="place-self-center font-bold text-white rounded-lg h-12 w-full mt-6 mb-7"
                 type="submit"
                 >Edit</button>
         

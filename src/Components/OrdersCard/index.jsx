@@ -2,8 +2,8 @@
 
 const OrdersCard = ({ totalPrice, totalProducts }) => {
     return (
-        <article className="flex flex-col p-4 w-80 h-16 items-center mb-3 border-2 border-purple-500 rounded-xl bg-white shadow-lg">
-            <header className="flex items-center justify-between w-full px-4 h-full text-purple-700 font-semibold">
+        <article className="flex flex-col p-4 w-80 h-16 items-center mb-3 border-2 border-[#4a91e2] border-500 rounded-xl bg-white shadow-lg">
+            <header className="flex items-center justify-between w-full px-4 h-full text-[#4a91e2] border-700 font-semibold">
                 <section className="flex flex-col">
                     <span className="font-light mr-2">10.09.2024</span>
                     <span className="font-light mr-2">{totalProducts} products</span>
