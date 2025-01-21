@@ -1,5 +1,5 @@
 // URL base de la API
-const API_BASE_URL = "https://teststoreapi-404b1fcf380d.herokuapp.com";
+const API_BASE_URL = "https://teststoreapi.onrender.com";
 
 // Función para obtener productos de la API
 export const fetchProducts = async () => {
