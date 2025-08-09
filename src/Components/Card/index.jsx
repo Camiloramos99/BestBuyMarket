@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ShopingCartContext } from "../../Context";
 
-const Card = ({ data: { title, price, category, image, id } }) => {
+const Card = ({ data: { title, price, category, image, id }, index }) => {
     // Extract count and setCount from ShopingCartContext using useContext.
     const { count, setCount, OpenProductDetail, setProductToShow, CartProducts, setCartProducts, OpenCheckoutSideMenu, CloseCheckoutSideMenu } = useContext(ShopingCartContext);
 
@@ -38,7 +38,7 @@ const Card = ({ data: { title, price, category, image, id } }) => {
                     className="w-full h-full object-cover rounded-lg" 
                     src={image} 
                     alt={title} 
-                    loading="lazy"
+                    loading={index < 8 ? "eager" : "lazy"}
                 />
                 <button 
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
