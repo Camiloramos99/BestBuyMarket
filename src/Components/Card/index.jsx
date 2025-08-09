@@ -38,6 +38,7 @@ const Card = ({ data: { title, price, category, image, id } }) => {
                     className="w-full h-full object-cover rounded-lg" 
                     src={image} 
                     alt={title} 
+                    loading="lazy"
                 />
                 <button 
                     className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
