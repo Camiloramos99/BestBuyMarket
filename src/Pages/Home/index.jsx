@@ -16,7 +16,7 @@ function Home() {
   
 const renderView = () => {
   if (filteredItems?.length > 0) {
-    return filteredItems.map(item , index => (
+    return filteredItems.map((item , index) => (
       <Card key={item.id} data={item} index={index} />
     ));
   } else {
