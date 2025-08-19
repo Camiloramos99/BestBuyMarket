@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "title": "Camiseta Básica",
+    "price": 100,
+    "category": "Clothes",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/sunglasses-woman-buildings_11zon.webp"
+  },
+  {
+    "id": 2,
+    "title": "Pantalones Jeans",
+    "price": 200,
+    "category": "Clothes",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/photo-jean-women_11zon.webp"
+  },
+  {
+    "id": 3,
+    "title": "Smartphone",
+    "price": 300,
+    "category": "Electronics",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/smartphone-photo-yellow_11zon.webp"
+  },
+  {
+    "id": 4,
+    "title": "Laptop",
+    "price": 400,
+    "category": "Electronics",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/laptop-photo-gray_11zon.webp"
+  },
+  {
+    "id": 5,
+    "title": "Sofá",
+    "price": 500,
+    "category": "Furnitures",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/couch-photo-brown_11zon.webp"
+  },
+  {
+    "id": 6,
+    "title": "Mesa de Centro",
+    "price": 600,
+    "category": "Furnitures",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/table-photo-wood_11zon.webp"
+  },
+  {
+    "id": 7,
+    "title": "Muñeca",
+    "price": 700,
+    "category": "Toys",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/doll-photo-girl_11zon.webp"
+  },
+  {
+    "id": 8,
+    "title": "Auto de Juguete",
+    "price": 800,
+    "category": "Toys",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/car-photo-red_11zon.webp"
+  },
+  {
+    "id": 9,
+    "title": "Reloj Inteligente",
+    "price": 900,
+    "category": "Electronics",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/watch-photo-black_11zon.webp"
+  },
+  {
+    "id": 10,
+    "title": "Auriculares",
+    "price": 1000,
+    "category": "Electronics",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/headsets-photo-white_11zon.webp"
+  },
+  {
+    "id": 11,
+    "title": "Camiseta Deportiva",
+    "price": 1100,
+    "category": "Clothes",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/shirt-photo-real-madrid_11zon.webp"
+  },
+  {
+    "id": 12,
+    "title": "Zapatos Deportivos",
+    "price": 1200,
+    "category": "Clothes",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/sneakers-photo-black_11zon.webp"
+  },
+  {
+    "id": 13,
+    "title": "Televisor",
+    "price": 1300,
+    "category": "Electronics",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/tv-photo_11zon.webp"
+  },
+  {
+    "id": 14,
+    "title": "Cámara Fotográfica",
+    "price": 1400,
+    "category": "Electronics",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/camera-photo_11zon.webp"
+  },
+  {
+    "id": 15,
+    "title": "Silla de Oficina",
+    "price": 1500,
+    "category": "Furnitures",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/desk-chair-photo_11zon.webp"
+  },
+  {
+    "id": 16,
+    "title": "Escritorio",
+    "price": 1600,
+    "category": "Furnitures",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/desk-photo-white_11zon.webp"
+  },
+  {
+    "id": 17,
+    "title": "Pelota de Fútbol",
+    "price": 1700,
+    "category": "Toys",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/ball-photo-brazuca_11zon.webp"
+  },
+  {
+    "id": 18,
+    "title": "Juego de Construcción",
+    "price": 1800,
+    "category": "Toys",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/toy-photo-wood_11zon.webp"
+  },
+  {
+    "id": 19,
+    "title": "Bicicleta",
+    "price": 1900,
+    "category": "Others",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/bike-photo-gray_11zon.webp"
+  },
+  {
+    "id": 20,
+    "title": "Patineta",
+    "price": 2000,
+    "category": "Others",
+    "image": "https://cdn.jsdelivr.net/gh/Camiloramos99/TestStoreAPI@main/assets/skate-board-photo_11zon.webp"
+  }
+]
