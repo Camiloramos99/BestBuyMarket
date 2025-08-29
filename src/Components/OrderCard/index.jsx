@@ -72,7 +72,7 @@ const OrderCard = ({ id, title, price, image, cantidad, HandleDelete }) => {
                 </div>
             </div>
             <div className="flex items-center gap-2">
-                <p className="text-lg font-medium">{price}</p>
+                <p className="text-lg font-medium">{price * cantidad}</p>
                 { renderIconX }
             </div>
         </div>
