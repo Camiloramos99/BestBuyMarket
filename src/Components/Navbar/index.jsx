@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ShopingCartContext } from "../../Context";
 import { NavLink } from "react-router-dom";
 import { useDevice } from "../../Context/deviceContext";
-import logo from "../../../public/logo.png"
+import logo from "../../../src/assets/logo.png"
 import ShoppingCart from "/src/Components/ShoppingCart";
 
 
