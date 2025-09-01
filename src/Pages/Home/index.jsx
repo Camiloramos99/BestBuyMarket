@@ -7,7 +7,7 @@ import { ShopingCartContext } from "../../Context";
 
 function Home() {
   const { category } = useParams();
-  const { searchQuery , setSearchQuery, filteredItems, setSelectedCategory } = useContext(ShopingCartContext);
+  const { searchQuery , filteredItems, setSelectedCategory } = useContext(ShopingCartContext);
 
   // Update selected category when 'category' changes
   useEffect(() => {
@@ -25,26 +25,10 @@ const renderView = () => {
     );
   }
 };
-
-const handleInputChange = (event) => {
-  const value = event.target.value;
-  setSearchQuery(value);
-};
   
     return (
       <Layout>
-      <div className="flex items-center justify-center relative w-80">
-        <h1 className="font-medium mb-6">Exclusive Products</h1>
-      </div>
-      <input 
-          type="text"  
-          value={searchQuery}
-          placeholder="Search a product" 
-          className="w-80 rounded-lg border border-black p-4 mb-4 " 
-          onChange={handleInputChange}
-        />
-
-      <section className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+      <section className="grid gap-4 grid-cols-4 w-full max-w-screen-lg mt-12">
         { renderView() }
       </section>
         <ProductDetail />

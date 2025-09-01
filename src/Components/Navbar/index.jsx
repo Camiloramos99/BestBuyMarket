@@ -9,8 +9,7 @@ import ShoppingCart from "/src/Components/ShoppingCart";
 const Navbar = () => {
     const activeStyle = "underline underline-offset-4"
     //Extract count from ShopingCartContext using useContext.
-    const { CartProducts, signOut, setSignOut, account, parsedAccount, hasUserAnAccount } = useContext(ShopingCartContext);
-
+    const { CartProducts, signOut, setSignOut, account, parsedAccount, hasUserAnAccount, searchQuery, setSearchQuery  } = useContext(ShopingCartContext);
     const { isMobile } = useDevice();
 
     //Is user sign out?.
@@ -74,75 +73,97 @@ const Navbar = () => {
           }
         } 
 
+    const handleInputChange = (event) => {
+        const value = event.target.value;
+        setSearchQuery(value);
+    };
 
     return (
-        <nav className="flex justify-between items-center bg-white fixed w-full z-10 top-0 py-5 px-8 h-[68px] text-sm font-light">
-            <ul className="flex items-center gap-3" >
-                <li className="font-semibold text-lg">
-                    <NavLink
-                    to="/"
-                    className={
-                        isMobile
-                        ? "" 
-                        : "text-xl font-semibold text-[#4A90E2] shadow-sm bg-gradient-to-r from-[#4a91e269] to-[#50e3c371] bg-opacity-30 px-3 py-1 rounded-lg hover:text-white transition duration-300 ease-in-out"
-                    }
-                    >
-                    {isMobile ? <img src={logo} alt="Logo" className="h-8" /> : "BestBuyMarket"}
-                    </NavLink>
+        <nav className="flex flex-col items-center bg-[#131921] text-white fixed w-full z-10 top-0 py-1 px-12 h-[100px] text-sm font-light">
+            <section className="flex flex-row items-center justify-between w-full h-2/3 ">
+                <ul className="flex items-center  h-full" >
+                    <li className="font-semibold text-lg">
+                        <NavLink
+                        to="/"
+                        className={
+                            isMobile
+                            ? "" 
+                            : "text-xl font-semibold text-[#4A90E2] shadow-sm bg-gradient-to-r from-[#4a91e269] to-[#50e3c371] bg-opacity-30 px-3 py-2 rounded-lg hover:text-white transition duration-300 ease-in-out"
+                        }
+                        >
+                        {isMobile ? <img src={logo} alt="Logo" className="h-8" /> : "BestBuyMarket"}
+                        </NavLink>
+                    </li>
+                </ul>   
 
-                </li>
-                <li>
-                    <NavLink 
-                        to="/category/clothes"
-                        className={({ isActive }) =>    
-                            isActive ? activeStyle : undefined      
-                        }>                     
-                        Clothes
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                        to="/category/electronics"
-                        className={({ isActive }) =>    
-                            isActive ? activeStyle : undefined      
-                        }>  
-                        Electronics
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                        to="/category/furnitures"
-                        className={({ isActive }) =>    
-                            isActive ? activeStyle : undefined      
-                        }>  
-                        Furnitures
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                        to="/category/toys"
-                        className={({ isActive }) =>    
-                            isActive ? activeStyle : undefined      
-                        }>  
-                        Toys
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink 
-                        to="/category/others"
-                        className={({ isActive }) =>    
-                            isActive ? activeStyle : undefined      
-                        }>  
-                        Others
-                    </NavLink>
-                </li>
-            </ul>    
-            <ul className="flex justify-between gap-3">
-                {renderView()}
-                <ShoppingCart />
-            </ul>   
+                <ul className="w-3/4 ">
+                    <li className="w-full text-black">
+                        <input 
+                            type="text"  
+                            value={searchQuery}
+                            placeholder="search for products, categories and more.." 
+                            className={`rounded-lg border border-black p-3 mb-0 ${isMobile ? 'w-full' : 'w-[500px]'}`}
+                            onChange={handleInputChange}
+                        />
+                    </li>
+                </ul> 
+            
+                <ul className="flex justify-between gap-3">
+                    {renderView()}
+                    <ShoppingCart />
+                </ul> 
+            </section>
+
+            <section className="flex flex-row w-full h-1/3">
+                <ul className={`flex  ${isMobile ? "gap-14" : "gap-16"} w-[56rem] justify-center items-center`}>          
+                    <li>
+                        <NavLink 
+                            to="/category/clothes"
+                            className={({ isActive }) =>    
+                                isActive ? activeStyle : undefined      
+                            }>                     
+                            Clothes
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to="/category/electronics"
+                            className={({ isActive }) =>    
+                                isActive ? activeStyle : undefined      
+                            }>  
+                            Electronics
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to="/category/furnitures"
+                            className={({ isActive }) =>    
+                                isActive ? activeStyle : undefined      
+                            }>  
+                            Furnitures
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to="/category/toys"
+                            className={({ isActive }) =>    
+                                isActive ? activeStyle : undefined      
+                            }>  
+                            Toys
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            to="/category/others"
+                            className={({ isActive }) =>    
+                                isActive ? activeStyle : undefined      
+                            }>  
+                            Others
+                        </NavLink>
+                    </li>
+                </ul>
+            </section>  
         </nav>
-        
     )
 }
 
