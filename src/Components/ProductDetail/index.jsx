@@ -6,7 +6,7 @@ const ProductDetail = () => {
 
     return (
         <aside 
-            className={`${IsProductDetailOpen ? "flex" : "hidden"} flex-col bg-white w-[360px] h-[calc(100vh-68px)] top-[68px] fixed right-0 border border-black rounded-lg`}
+            className={`${IsProductDetailOpen ? "flex" : "hidden"} flex-col bg-white w-[360px] h-[calc(100vh-100px)] top-[100px] fixed right-0 border border-black rounded-lg`}
         >
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>Detail</h2>
@@ -23,14 +23,14 @@ const ProductDetail = () => {
                 </svg>
             </div>
             <figure className="px-6">
-                <div className="w-full h-60 overflow-hidden rounded-lg">
+                <div className="w-full h-52 rounded-lg flex flex-col">
                     <img 
-                        className="w-full h-full object-cover" 
+                        className="w-full h-52 object-cover rounded-lg" 
                         src={ProductToShow.image}  
                         alt={ProductToShow.title} 
                     />
                 </div>
-                    <p className="flex flex-col pt-4">
+                    <p className="flex flex-1 flex-col pt-4">
                         <span className="font-medium text-2xl mb-2">${ProductToShow.price}</span>
                         <span className="font-medium text-md">{ProductToShow.title}</span>
                         <span className="font-light text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem error odit maiores commodi omnis.</span>
