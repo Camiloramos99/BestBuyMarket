@@ -1,9 +1,12 @@
 import { useContext } from "react";
+import { useDevice } from "../../Context/deviceContext";
 import { ShopingCartContext } from "../../Context";
 
 const Card = ({ data: { title, price, category, image, id }, index }) => {
     // Extract count and setCount from ShopingCartContext using useContext.
     const { count, setCount, OpenProductDetail, setProductToShow, CartProducts, setCartProducts, OpenCheckoutSideMenu, CloseCheckoutSideMenu } = useContext(ShopingCartContext);
+
+    const { isMobile } = useDevice();
 
     const showProduct = (productDetail) => {
         CloseCheckoutSideMenu();
@@ -27,7 +30,7 @@ const Card = ({ data: { title, price, category, image, id }, index }) => {
     
     return (
         <article 
-            className="bg-white cursor-pointer h-60 w-56 rounded-lg"
+            className={`bg-white cursor-pointer h-60 ${isMobile ? "w-44" : "w-56 "} rounded-lg`}
             onClick={() => showProduct({ title, price, category, image })}
         >
             <figure className="relative mb-2 w-full h-4/5">

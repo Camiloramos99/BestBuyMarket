@@ -58,17 +58,22 @@ const Navbar = () => {
                     Sign out
                 </NavLink>
             </li>
+                <ShoppingCart />
            </>
           )
         } else {
             return (
-                <li>
+            <>
+                <li className="min-w-max">
                 <NavLink
                     to="/sign-in"
-                    className={({ isActive }) => isActive ? activeStyle : undefined }
-                    >Sign in
+                    className={({ isActive }) => isActive ? activeStyle : undefined}
+                >
+                    Sign in
                 </NavLink>
                 </li>
+                <ShoppingCart />
+            </>
             )
           }
         } 
@@ -79,8 +84,14 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="flex flex-col items-center bg-[#131921] text-white fixed w-full z-10 top-0 py-1 px-12 h-[100px] text-sm font-light">
-            <section className="flex flex-row items-center justify-between w-full h-2/3 ">
+        <nav className={`flex flex-col items-center bg-[#131921] text-white fixed w-full z-10 top-0 py-1 h-[100px] text-sm font-light ${isMobile ? "px-1" : "px-12"}`}>
+            <section
+                className={`${
+                    isMobile ? "flex justify-between items-center w-full px-2" : "grid grid-cols-3"
+                } max-w-screen-lg mx-auto w-[96%] h-2/3 gap-4`}
+            >
+
+
                 <ul className="flex items-center  h-full" >
                     <li className="font-semibold text-lg">
                         <NavLink
@@ -96,26 +107,25 @@ const Navbar = () => {
                     </li>
                 </ul>   
 
-                <ul className="w-3/4 ">
-                    <li className="w-full text-black">
+                <ul className={`flex justify-center ${isMobile ? "w-[60%]" : "w[100%]"}`}>
+                    <li className="w-full max-w-md text-black">
                         <input 
                             type="text"  
                             value={searchQuery}
-                            placeholder="search for products, categories and more.." 
-                            className={`rounded-lg border border-black p-3 mb-0 ${isMobile ? 'w-full' : 'w-[500px]'}`}
+                            placeholder={`${isMobile ? "Search products..." : "Search for products, categories and more.."}`}
+                            className="rounded-lg border border-black p-3 mb-0 w-full"
                             onChange={handleInputChange}
                         />
                     </li>
                 </ul> 
             
-                <ul className="flex justify-between gap-3">
+                <ul className="flex justify-end items-center gap-3">
                     {renderView()}
-                    <ShoppingCart />
                 </ul> 
             </section>
 
             <section className="flex flex-row w-full h-1/3">
-                <ul className={`flex  ${isMobile ? "gap-14" : "gap-16"} w-[56rem] justify-center items-center`}>          
+                <ul className={`flex  ${isMobile ? "gap-4" : "gap-6"} w-[56rem] max-w-screen-lg mx-auto justify-center items-center`}>          
                     <li>
                         <NavLink 
                             to="/category/clothes"

@@ -1,11 +1,11 @@
 const Layout = ({ children }) => {
-    return (
-        <div className="flex flex-col mt-20 items-center">
-            { children }
-        </div>
-    )
+  return (
+    <div className="grid justify-items-center">
+      <main>
+        { children }
+      </main>
+    </div>
+  )
 }
-
-    
 
 export default Layout
