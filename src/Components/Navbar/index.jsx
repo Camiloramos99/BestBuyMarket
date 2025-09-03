@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ShopingCartContext } from "../../Context";
 import { NavLink } from "react-router-dom";
 import { useDevice } from "../../Context/deviceContext";
@@ -11,6 +11,28 @@ const Navbar = () => {
     //Extract count from ShopingCartContext using useContext.
     const { CartProducts, signOut, setSignOut, account, parsedAccount, hasUserAnAccount, searchQuery, setSearchQuery  } = useContext(ShopingCartContext);
     const { isMobile } = useDevice();
+
+    const [ hidden, setHidden ] = useState(false);
+    const lastScrollTop = useRef(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop.current) {
+                setHidden(true);
+            } else {
+                setHidden(false);
+            }
+            lastScrollTop.current = currentScroll <= 0 ? 0 : currentScroll;
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+           return () => {
+                window.removeEventListener("scroll", handleScroll);
+            };
+    }, []);
 
     //Is user sign out?.
     const signOutInLocalStorage  = localStorage.getItem("sign-out");
@@ -84,7 +106,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`flex flex-col items-center bg-[#131921] text-white fixed w-full z-10 top-0 py-1 h-[100px] text-sm font-light ${isMobile ? "px-1" : "px-12"}`}>
+        <nav className={`flex flex-col items-center bg-[#131921] text-white fixed top-0 left-0 w-full transition-transform duration-300 ${ hidden ? "-translate-y-full" : "translate-y-0"} z-10 py-1 h-[100px] text-sm font-light ${isMobile ? "px-1" : "px-12"}`}>
             <section
                 className={`${
                     isMobile ? "flex justify-between items-center w-full px-2" : "grid grid-cols-3"
