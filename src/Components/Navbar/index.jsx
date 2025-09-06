@@ -118,6 +118,7 @@ const Navbar = () => {
                     <li className="font-semibold text-lg">
                         <NavLink
                         to="/"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
                         className={
                             isMobile
                             ? "" 

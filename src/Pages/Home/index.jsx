@@ -24,7 +24,9 @@ const renderView = () => {
     ));
   } else {
     return (
-      <div>We couldn’t find any matching products.</div>
+      <div className="col-span-full flex w-full items-start justify-center min-h-[1250px] ">
+          <div className="pt-28">We couldn’t find any matching products.</div>
+      </div>
     );
   }
 };
