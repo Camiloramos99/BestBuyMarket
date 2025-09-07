@@ -33,7 +33,9 @@ const App = () => {
     <ShopingCartProvider>
       <BrowserRouter>
           <Navbar />
-          <AppRoutes />
+          <div className="mt-32">
+            <AppRoutes />
+          </div>
           <CheckoutSideMenu/>
           <Footer/>
       </BrowserRouter>

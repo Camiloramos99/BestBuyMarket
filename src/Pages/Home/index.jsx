@@ -33,7 +33,7 @@ const renderView = () => {
   
     return (
       <Layout>
-      <section className={`grid gap-4 ${isMobile ? "grid-cols-2" : "grid-cols-4" } w-full max-w-screen-lg place-items-center mt-32 items-center`}>
+      <section className={`grid gap-4 ${isMobile ? "grid-cols-2" : "grid-cols-4" } w-full max-w-screen-lg place-items-center items-center`}>
         { renderView() }
       </section>
         <ProductDetail />
