@@ -34,12 +34,19 @@ const CheckoutSideMenu = () => {
         } 
     }
 
+    const TotalQuantity = CartProducts.reduce((total, product) => total + product.cantidad, 0);
+
     return (
         <aside 
-            className={`${IsCheckoutSideMenuOpen ? "flex" : "hidden"} flex-col bg-white w-[360px] h-[calc(100vh-100px)] top-[100px] fixed right-0 border z-30 border-black rounded-lg overflow-auto overscroll-auto`}
+            className={`${IsCheckoutSideMenuOpen ? "flex" : "hidden"} flex-col bg-white w-[360px] h-[99vh] top-[100px] fixed right-0 border z-30 border-black rounded-lg overflow-auto overscroll-auto`}
+            style={{ marginTop: "-6rem" }}
         >
             <div className='flex justify-between items-center p-6'>
-                <h2 className='font-medium text-xl'>My Order</h2>
+                <h2 className='flex flex-row font-medium text-xl'>My Order
+                    <span className="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-semibold transform ">
+                        {TotalQuantity}
+                </span>
+                </h2>
                 <svg 
                     xmlns="http://www.w3.org/2000/svg" 
                     fill="none" 

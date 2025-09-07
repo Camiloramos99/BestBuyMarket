@@ -6,7 +6,8 @@ const ProductDetail = () => {
 
     return (
         <aside 
-            className={`${IsProductDetailOpen ? "flex" : "hidden"} flex-col bg-white w-[360px] h-[calc(100vh-100px)] top-[100px] fixed right-0 border border-black rounded-lg`}
+            className={`${IsProductDetailOpen ? "flex" : "hidden"} flex-col bg-white w-[360px] h-[99vh] top-[100px] fixed right-0 border border-black rounded-lg z-10`}
+            style={{ marginTop: "-6rem" }} 
         >
             <div className='flex justify-between items-center p-6'>
                 <h2 className='font-medium text-xl'>Detail</h2>
@@ -23,9 +24,9 @@ const ProductDetail = () => {
                 </svg>
             </div>
             <figure className="px-6">
-                <div className="w-full h-52 rounded-lg flex flex-col">
+                <div className="w-full h-64 rounded-lg flex flex-col">
                     <img 
-                        className="w-full h-52 object-cover rounded-lg" 
+                        className="w-full h-64 object-cover rounded-lg" 
                         src={ProductToShow.image}  
                         alt={ProductToShow.title} 
                     />
