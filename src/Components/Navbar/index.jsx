@@ -49,8 +49,8 @@ const Navbar = () => {
         if (hasUserAnAccount && !isUserSignOut) {
           return (
            <>
-            <li className="text-black/60">
-                {parsedAccount?.email}
+            <li className="text-[#4A90E2]">
+                <p>Hi {parsedAccount?.name}!</p>
             </li>
             <li>
                 <NavLink 

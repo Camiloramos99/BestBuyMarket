@@ -20,9 +20,10 @@ function SignIn() {
 
   const createAnAccount = (event) => {
       event.preventDefault();
-      const formData = new FormData(form.current)
+      const formData = new FormData(form.current);
+      const fullName = formData.get('name');
       const data = {
-        name: formData.get('name'),
+        name: fullName.split(' ')[0],
         email: formData.get('email'),
         password: formData.get('password')
       }
