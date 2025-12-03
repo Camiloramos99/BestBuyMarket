@@ -46,14 +46,14 @@ function SignIn() {
         <input 
             type="text" 
             id="email" 
-            placeholder={parsedAccount?.email || "your email"}
+            placeholder="your email"
             className="input input-email bg-text-input-field text-base rounded-lg h-10 p-2 mb-5 " 
         />     
         <label htmlFor="password" className="text-sm font-semibold font-sans mb-1">Password</label>
         <input 
             type="password" 
             id="password"   
-            placeholder={parsedAccount?.password || "your password"} 
+            placeholder="your password" 
             className=" bg-text-input-field text-base rounded-lg h-10 p-2 mb-6 "
         />
         <Link to="/">
@@ -101,7 +101,7 @@ function SignIn() {
                     type="text" 
                     id="email" 
                     name="email"
-                    placeholder="camiloramos99@outlook.com" 
+                    placeholder="your email" 
                     defaultValue={parsedAccount?.email}
                     className="input input-email bg-text-input-field text-base rounded-lg h-10 p-2 mb-5 " />
                 
